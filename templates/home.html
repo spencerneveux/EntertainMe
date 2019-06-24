@@ -1,0 +1,131 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/><img class="d-block w-100" src="{{url_for('static', filename='landing.jpg')}}"></svg>
+        <div class="container">
+          <div class="carousel-caption text-left">
+          </div>
+        </div>
+      </div>
+      {% for i in range(length) %}
+      <div class="carousel-item ">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/><img src="https://image.tmdb.org/t/p/w780/{{data[i]['backdrop_path']}}"></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <p><a class="btn btn-lg btn-primary" href="{{url_for('details', id=data[i]['id'], type='movie')}}" role="button">{{data[i]['title']}}</a></p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+
+  <!-- TV Shows
+  ================================================== -->
+ 
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w780/{{popular_tv['results'][0]['poster_path']}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{popular_tv['results'][0]['name']}}</h5>
+          <p class="card-text">{{popular_tv['results'][0]['overview']}}</p>
+          <a href="{{url_for('details', id=popular_tv['results'][0]['id'], type='tv')}}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w780/{{popular_tv['results'][1]['poster_path']}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{popular_tv['results'][1]['name']}}</h5>
+          <p class="card-text">{{popular_tv['results'][1]['overview']}}</p>
+          <a href="{{url_for('details', id=popular_tv['results'][1]['id'], type='tv')}}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+      </div><!-- /.col-lg-4 -->
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w780/{{popular_tv['results'][2]['poster_path']}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{popular_tv['results'][2]['name']}}</h5>
+          <p class="card-text">{{popular_tv['results'][2]['overview']}}</p>
+          <a href="{{url_for('details', id=popular_tv['results'][2]['id'], type='tv')}}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+        <div class="container m-2 mx-auto">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">{{trending['results'][0]['title']}}</h2>
+          <p class="lead">{{trending['results'][0]['overview']}}.</p>
+        </div>
+        <div class="col-md-5">
+          <a href="{{url_for('details', id=trending['results'][0]['id'], type='movie')}}"><img class="card-img" style="width: 450px; height: 500px;" src="https://image.tmdb.org/t/p/w780/{{trending['results'][0]['poster_path']}}" alt="Card image"></a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="container m-2 mx-auto">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">{{trending['results'][1]['title']}}</h2>
+          <p class="lead">{{trending['results'][1]['overview']}}.</p>
+        </div>
+        <div class="col-md-5">
+          <a href="{{url_for('details', id=trending['results'][1]['id'], type='movie')}}"><img class="card-img" style="width: 450px; height: 500px;" src="https://image.tmdb.org/t/p/w780/{{trending['results'][1]['poster_path']}}" alt="Card image"></a>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <hr class="featurette-divider">
+    <div class="container m-2 mx-auto">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">{{trending['results'][2]['title']}}</h2>
+          <p class="lead">{{trending['results'][2]['overview']}}.</p>
+        </div>
+        <div class="col-md-5">
+          <a href="{{url_for('details', id=trending['results'][2]['id'], type='movie')}}"><img class="card-img mr-2" style="width: 450px; height: 500px;" src="https://image.tmdb.org/t/p/w780/{{trending['results'][2]['poster_path']}}" alt="Card image"></a>
+        </div>
+      </div>
+    </div>
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+  {% endblock content%}
