@@ -1,6 +1,6 @@
 import requests
 
-KEY = 'd6982a301b9628f78bb3be565a945c79'
+KEY = 'API KEY'
 
 class Movie:
 
